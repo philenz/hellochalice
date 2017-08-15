@@ -1,4 +1,11 @@
+import sys
+
 from chalice import Chalice, BadRequestError, NotFoundError
+
+if sys.version_info[0] == 3:
+    from urllib.parse import urlparse, parse_qs
+else:
+    from urlparse import urlparse, parse_qs
 
 app = Chalice(app_name='hellochalice')
 app.debug = True
@@ -11,9 +18,16 @@ CITIES_TO_STATE = {
 OBJECTS = {
 }
 
-@app.route('/')
+# use different content type than default application/json
+# http --form POST https://19bdrm9ink.execute-api.ap-southeast-2.amazonaws.com/api/ states=CA states=CA --debug
+# use httpie's --form to set content type
+@app.route('/', methods=['POST'],
+           content_types=['application/x-www-form-urlencoded'])
 def index():
-    return {'hello': 'world'}
+    parsed = parse_qs(app.current_request.raw_body.decode())
+    return {
+        'states': parsed.get('states', [])
+    }
 
 @app.route('/cities/{city}')
 def state_of_city(city):
@@ -51,6 +65,11 @@ def myobject(key):
         except KeyError:
             raise NotFoundError(key)
 
+# dump request
+# http 'https://endpoint/api/introspect?query1=value1&query2=value2' 'X-TestHeader: Foo'
 @app.route('/introspect')
 def introspect():
     return app.current_request.to_dict()
+
+
+
