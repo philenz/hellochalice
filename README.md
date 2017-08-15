@@ -1,5 +1,6 @@
 ### Chalice Quickstart
 * http://chalice.readthedocs.io/en/latest/quickstart.html
+* https://aws.amazon.com/blogs/developer/category/python/
 
 ##### Hello World
 * chalice new-project hellochalice
@@ -29,10 +30,12 @@ The app.current_request object also has the following properties.
 * current_request.context - A dict of additional context information
 * current_request.stage_vars - Configuration for the API Gateway stage
 
-
 ##### CORS
 * You can specify whether a view supports CORS by adding the cors=True parameter to your @app.route() call.
 * By default this value is false.
 * If more fine grained control of the CORS headers is desired, set the cors parameter to an instance of CORSConfig instead of True.
 * The CORSConfig object can be imported from the chalice package.
 
+##### Libraries
+* To add a code library use import chalicelib.xxxx
+* Then create a directory called chalicelib containing xxxx.py and \_\_init\_\_.py
