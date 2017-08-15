@@ -1,6 +1,6 @@
 import sys
 
-from chalice import Chalice, BadRequestError, NotFoundError
+from chalice import Chalice, BadRequestError, NotFoundError, Response
 
 if sys.version_info[0] == 3:
     from urllib.parse import urlparse, parse_qs
@@ -18,12 +18,18 @@ CITIES_TO_STATE = {
 OBJECTS = {
 }
 
+@app.route('/')
+def index():
+    return {'hello': 'chalice' }
+
 # use different content type than default application/json
 # http --form POST https://19bdrm9ink.execute-api.ap-southeast-2.amazonaws.com/api/ states=CA states=CA --debug
 # use httpie's --form to set content type
-@app.route('/', methods=['POST'],
+#
+# if not using application/json, use raw_body instead of the usual json_body
+@app.route('/raw', methods=['POST'],
            content_types=['application/x-www-form-urlencoded'])
-def index():
+def rawindex():
     parsed = parse_qs(app.current_request.raw_body.decode())
     return {
         'states': parsed.get('states', [])
@@ -71,5 +77,9 @@ def myobject(key):
 def introspect():
     return app.current_request.to_dict()
 
-
-
+# define our response
+@app.route('/hello')
+def respindex():
+    return Response(body='hello world!',
+                    status_code=200,
+                    headers={'Content-Type': 'text/plain'})
