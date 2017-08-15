@@ -18,6 +18,16 @@
 * TooManyRequestsError - return a status code of 429
 * ChaliceViewError - return a status code of 500
 
+##### Requests
+The app.current_request object also has the following properties.
+* current_request.query_params - A dict of the query params for the request.
+* current_request.headers - A dict of the request headers.
+* current_request.uri_params - A dict of the captured URI params.
+* current_request.method - The HTTP method (as a string).
+* current_request.json_body - The parsed JSON body (json.loads(raw_body))
+* current_request.raw_body - The raw HTTP body as bytes.
+* current_request.context - A dict of additional context information
+* current_request.stage_vars - Configuration for the API Gateway stage
 
 
 
