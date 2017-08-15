@@ -51,3 +51,6 @@ def myobject(key):
         except KeyError:
             raise NotFoundError(key)
 
+@app.route('/introspect')
+def introspect():
+    return app.current_request.to_dict()
