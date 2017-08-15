@@ -30,4 +30,9 @@ The app.current_request object also has the following properties.
 * current_request.stage_vars - Configuration for the API Gateway stage
 
 
+##### CORS
+* You can specify whether a view supports CORS by adding the cors=True parameter to your @app.route() call.
+* By default this value is false.
+* If more fine grained control of the CORS headers is desired, set the cors parameter to an instance of CORSConfig instead of True.
+* The CORSConfig object can be imported from the chalice package.
 
