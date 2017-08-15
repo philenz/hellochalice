@@ -1,5 +1,8 @@
 import sys
+import json
+import boto3
 
+from botocore.exceptions import ClientError
 from chalice import Chalice, BadRequestError, NotFoundError, Response
 
 if sys.version_info[0] == 3:
@@ -15,8 +18,8 @@ CITIES_TO_STATE = {
     'portland': 'OR',
 }
 
-OBJECTS = {
-}
+S3 = boto3.client('s3', region_name='ap-southeast-2')
+BUCKET = 'hellochalice'
 
 @app.route('/')
 def index():
@@ -61,14 +64,16 @@ def create_user():
 # GET it...
 # http https://19bdrm9ink.execute-api.ap-southeast-2.amazonaws.com/api/objects/mykey
 @app.route('/objects/{key}', methods=['GET', 'PUT'])
-def myobject(key):
+def s3objects(key):
     request = app.current_request
     if request.method == 'PUT':
-        OBJECTS[key] = request.json_body
+        S3.put_object(Bucket=BUCKET, Key=key,
+                      Body=json.dumps(request.json_body))
     elif request.method == 'GET':
         try:
-            return {key: OBJECTS[key]}
-        except KeyError:
+            response = S3.get_object(Bucket=BUCKET, Key=key)
+            return json.loads(response['Body'].read())
+        except ClientError as e:
             raise NotFoundError(key)
 
 # dump request
