@@ -1,4 +1,4 @@
-from chalice import Chalice, BadRequestError
+from chalice import Chalice, BadRequestError, NotFoundError
 
 app = Chalice(app_name='hellochalice')
 app.debug = True
@@ -8,6 +8,8 @@ CITIES_TO_STATE = {
     'portland': 'OR',
 }
 
+OBJECTS = {
+}
 
 @app.route('/')
 def index():
@@ -33,3 +35,19 @@ def create_user():
 
     # We'll echo the json body back to the user in a 'user' key.
     return {'user': user_as_json}
+
+# PUT something with...
+# echo '{"foo":"bar"}' | http PUT https://19bdrm9ink.execute-api.ap-southeast-2.amazonaws.com/api/objects/mykey
+# GET it...
+# http https://19bdrm9ink.execute-api.ap-southeast-2.amazonaws.com/api/objects/mykey
+@app.route('/objects/{key}', methods=['GET', 'PUT'])
+def myobject(key):
+    request = app.current_request
+    if request.method == 'PUT':
+        OBJECTS[key] = request.json_body
+    elif request.method == 'GET':
+        try:
+            return {key: OBJECTS[key]}
+        except KeyError:
+            raise NotFoundError(key)
+
