@@ -1,7 +1,6 @@
 ### Chalice Quickstart
 * http://chalice.readthedocs.io/en/latest/quickstart.html
 * https://aws.amazon.com/blogs/developer/category/python/
-* https://www.youtube.com/watch?v=0fMJqWLE6Iw
 
 ##### Hello World
 * chalice new-project hellochalice
@@ -40,3 +39,13 @@ The app.current_request object also has the following properties.
 ##### Libraries
 * To add a code library use import chalicelib.xxxx
 * Then create a directory called chalicelib containing xxxx.py and \_\_init\_\_.py
+
+##### Authorization
+* None
+* chalice.IamAuthorizer()
+* chalice.CognitoUserPoolAuthorizer()
+
+##### Sample Code
+* https://www.youtube.com/watch?v=0fMJqWLE6Iw
+* https://github.com/kyleknap/chalice-trivia
+* (cloned in ~/Serverless)
