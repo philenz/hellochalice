@@ -45,6 +45,15 @@ The app.current_request object also has the following properties.
 * chalice.IamAuthorizer()
 * chalice.CognitoUserPoolAuthorizer()
 
+##### Adding Standalone Lambda functions
+* Use the @app.lambda_function decorator
+* Example in sample chalice-trivia app to autoconfirm_user
+
+##### Other Features
+* @app.schedule for cron
+* Dependency management
+* AWS IAM policy generation
+
 ##### Sample Code
 * https://www.youtube.com/watch?v=0fMJqWLE6Iw
 * https://github.com/kyleknap/chalice-trivia
