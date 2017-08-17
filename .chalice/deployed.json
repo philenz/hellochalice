@@ -5,7 +5,7 @@
     "api_handler_arn": "arn:aws:lambda:ap-southeast-2:092585690455:function:hellochalice-dev",
     "rest_api_id": "19bdrm9ink",
     "lambda_functions": {},
-    "chalice_version": "1.0.0",
+    "chalice_version": "1.0.1",
     "api_gateway_stage": "api",
     "backend": "api"
   }
