@@ -53,6 +53,7 @@ The app.current_request object also has the following properties.
 * @app.schedule for cron
 * Dependency management
 * AWS IAM policy generation
+* Throttle API Gateway to defend against DDOS
 
 ##### Sample Code
 * https://www.youtube.com/watch?v=0fMJqWLE6Iw
