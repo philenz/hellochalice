@@ -57,5 +57,4 @@ The app.current_request object also has the following properties.
 
 ##### Sample Code
 * https://www.youtube.com/watch?v=0fMJqWLE6Iw
-* https://github.com/kyleknap/chalice-trivia
-* (cloned in ~/Serverless)
+* https://github.com/philenz/chalice-trivia.git (cloned from youtube sample)
