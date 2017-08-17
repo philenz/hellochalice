@@ -1,6 +1,7 @@
 ### Chalice Quickstart
 * http://chalice.readthedocs.io/en/latest/quickstart.html
 * https://aws.amazon.com/blogs/developer/category/python/
+* http://chalice.readthedocs.io/en/latest/
 
 ##### Hello World
 * chalice new-project hellochalice
