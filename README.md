@@ -40,6 +40,7 @@ The app.current_request object also has the following properties.
 ##### Libraries
 * To add a code library use import chalicelib.xxxx
 * Then create a directory called chalicelib containing xxxx.py and \_\_init\_\_.py
+* http://chalice.readthedocs.io/en/latest/topics/multifile.html
 
 ##### Authorization
 * None

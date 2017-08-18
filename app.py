@@ -2,6 +2,7 @@ import sys
 import os
 import json
 import boto3
+import logging
 
 from botocore.exceptions import ClientError
 from chalice import Chalice, BadRequestError, NotFoundError, Response
@@ -13,6 +14,9 @@ else:
 
 app = Chalice(app_name='hellochalice')
 app.debug = True
+app.log.setLevel(logging.DEBUG)
+
+app.log.debug("Debugging hellochalice!")
 
 CITIES_TO_STATE = {
     'seattle': 'WA',
@@ -21,6 +25,8 @@ CITIES_TO_STATE = {
 
 S3 = boto3.client('s3', region_name='ap-southeast-2')
 BUCKET = 'hellochalice'
+
+
 
 @app.route('/')
 def index():
