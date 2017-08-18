@@ -1,9 +1,15 @@
 {
   "stages": {
     "dev": {
-      "api_gateway_stage": "api"
+      "api_gateway_stage": "api",
+      "environment_variables": {
+        "DB_TABLE": "dev-hellochalice"
+      }
     }
   }, 
   "version": "2.0", 
-  "app_name": "hellochalice"
+  "app_name": "hellochalice",
+  "environment_variables": {
+    "PROJECT_NAME": "hellochalice"
+  }
 }

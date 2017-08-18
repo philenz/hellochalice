@@ -1,4 +1,5 @@
 import sys
+import os
 import json
 import boto3
 
@@ -23,7 +24,9 @@ BUCKET = 'hellochalice'
 
 @app.route('/')
 def index():
-    return {'hello': 'chalice' }
+    return {
+        'hello': os.environ['DB_TABLE']
+    }
 
 # use different content type than default application/json
 # http --form POST https://19bdrm9ink.execute-api.ap-southeast-2.amazonaws.com/api/ states=CA states=CA --debug

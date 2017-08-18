@@ -56,6 +56,10 @@ The app.current_request object also has the following properties.
 * AWS IAM policy generation
 * Throttle API Gateway to defend against DDOS
 
+##### Environment Variables
+* Set them in config.json: http://chalice.readthedocs.io/en/latest/topics/configfile.html#examples
+* Use in your functions: https://docs.aws.amazon.com/lambda/latest/dg/env_variables.html
+
 ##### Sample Code
 * https://www.youtube.com/watch?v=0fMJqWLE6Iw
 * https://github.com/philenz/chalice-trivia.git (cloned from youtube sample)
