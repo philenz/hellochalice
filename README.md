@@ -62,6 +62,12 @@ The app.current_request object also has the following properties.
 * Set them in config.json: http://chalice.readthedocs.io/en/latest/topics/configfile.html#examples
 * Use in your functions: https://docs.aws.amazon.com/lambda/latest/dg/env_variables.html
 
+##### Generate Frontend Code
+* Use chalice generate-sdk to generate frontend Javascript code
+* Routes must have CORS enabled
+* Example... http://chalice.readthedocs.io/en/latest/topics/sdks.html#example
+* Build a frontend and deploy to S3/CloudFront
+
 ##### Sample Code
 * https://www.youtube.com/watch?v=0fMJqWLE6Iw
 * https://github.com/philenz/chalice-trivia.git (cloned from youtube sample)

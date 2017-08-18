@@ -28,7 +28,7 @@ BUCKET = 'hellochalice'
 
 
 
-@app.route('/')
+@app.route('/', cors=True)
 def index():
     return {
         'hello': os.environ['DB_TABLE']
